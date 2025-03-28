@@ -13,7 +13,7 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative pt-20">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"></div>
+      <div className="absolute inset-0 bg-[url('/lovable-uploads/896a5952-96e3-424e-850b-44b3cb77b16d.png')] bg-cover bg-center opacity-15"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
