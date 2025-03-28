@@ -19,7 +19,7 @@ const AboutSection = () => {
             <div className="relative">
               <div className="w-full h-[350px] rounded-lg overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80" 
+                  src="/lovable-uploads/896a5952-96e3-424e-850b-44b3cb77b16d.png" 
                   alt="Yug Patel" 
                   className="w-full h-full object-cover"
                 />
