@@ -1,18 +1,28 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 20;
       if (isScrolled !== scrolled) {
         setScrolled(isScrolled);
+      }
+      
+      // Determine active section
+      const sections = ['home', 'about', 'projects', 'resume', 'contact'];
+      for (const section of sections.reverse()) {
+        const element = document.getElementById(section);
+        if (element && window.scrollY >= element.offsetTop - 200) {
+          setActiveSection(section);
+          break;
+        }
       }
     };
 
@@ -22,12 +32,20 @@ const Navbar = () => {
     };
   }, [scrolled]);
 
+  const scrollToSection = (id: string) => {
+    setMobileMenuOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Resume', href: '#resume' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', id: 'home' },
+    { name: 'About', id: 'about' },
+    { name: 'Projects', id: 'projects' },
+    { name: 'Resume', id: 'resume' },
+    { name: 'Contact', id: 'contact' },
   ];
 
   return (
@@ -41,9 +59,13 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className="navbar-link">
+            <button
+              key={link.name}
+              onClick={() => scrollToSection(link.id)}
+              className={`navbar-link ${activeSection === link.id ? 'active' : ''}`}
+            >
               {link.name}
-            </a>
+            </button>
           ))}
         </div>
 
@@ -64,14 +86,13 @@ const Navbar = () => {
       {mobileMenuOpen && (
         <div className="fixed inset-0 top-16 bg-portfolio-darkblue z-40 flex flex-col items-center pt-10">
           {navLinks.map((link) => (
-            <a
+            <button
               key={link.name}
-              href={link.href}
-              className="navbar-link py-4 text-xl"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => scrollToSection(link.id)}
+              className={`navbar-link py-4 text-xl ${activeSection === link.id ? 'active' : ''}`}
             >
               {link.name}
-            </a>
+            </button>
           ))}
         </div>
       )}

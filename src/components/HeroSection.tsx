@@ -4,6 +4,13 @@ import { ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative pt-20">
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"></div>
@@ -23,20 +30,28 @@ const HeroSection = () => {
             for a career in IT and software development.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button asChild variant="default" className="bg-portfolio-highlight text-portfolio-darkblue hover:bg-portfolio-highlight/90">
-              <a href="#projects">View My Projects</a>
+            <Button 
+              variant="default" 
+              className="bg-portfolio-highlight text-portfolio-darkblue hover:bg-portfolio-highlight/90"
+              onClick={() => scrollToSection('projects')}
+            >
+              View My Projects
             </Button>
-            <Button asChild variant="outline" className="border-portfolio-highlight text-portfolio-highlight hover:bg-portfolio-highlight/10">
-              <a href="#contact">Contact Me</a>
+            <Button 
+              variant="outline" 
+              className="border-portfolio-highlight text-portfolio-highlight hover:bg-portfolio-highlight/10"
+              onClick={() => scrollToSection('contact')}
+            >
+              Contact Me
             </Button>
           </div>
         </div>
       </div>
       
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center animate-bounce">
-        <a href="#about" className="text-portfolio-highlight">
+        <button onClick={() => scrollToSection('about')} className="text-portfolio-highlight">
           <ArrowDown size={32} />
-        </a>
+        </button>
       </div>
     </section>
   );
