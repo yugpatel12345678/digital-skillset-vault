@@ -5,6 +5,9 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 
+// Resume file path
+const resumeFilePath = "/lovable-uploads/resume.pdf";
+
 const ResumeSection = () => {
   const resumeData = {
     education: [
@@ -34,9 +37,11 @@ const ResumeSection = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center mb-8">
           <h2 className="section-title">Resume</h2>
-          <Button className="bg-portfolio-highlight text-portfolio-darkblue hover:bg-portfolio-highlight/90">
-            <Download size={16} className="mr-2" />
-            Download Resume
+          <Button asChild className="bg-portfolio-highlight text-portfolio-darkblue hover:bg-portfolio-highlight/90">
+            <a href={resumeFilePath} download="Yug_Patel_Resume.pdf">
+              <Download size={16} className="mr-2" />
+              Download Resume
+            </a>
           </Button>
         </div>
         

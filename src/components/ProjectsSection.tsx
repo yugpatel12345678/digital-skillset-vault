@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
@@ -17,7 +17,6 @@ const projects = [
     ],
     challenge: 'Implemented authentication securely while ensuring a smooth user experience.',
     github: 'https://github.com/yugpatel12345678',
-    live: '#',
     technologies: ['React', 'Firebase', 'JavaScript', 'CSS']
   },
   {
@@ -32,7 +31,6 @@ const projects = [
     ],
     challenge: 'Ensured efficient content organization and seamless user access control.',
     github: 'https://github.com/yugpatel12345678/capstone',
-    live: '#',
     technologies: ['Node.js', 'MongoDB', 'Express', 'React']
   },
   {
@@ -47,7 +45,6 @@ const projects = [
     ],
     challenge: 'Optimized app performance to run smoothly on various Android devices.',
     github: 'https://github.com/yugpatel12345678',
-    live: '#',
     technologies: ['Java', 'Android SDK', 'Firebase', 'Room Database']
   }
 ];
@@ -87,17 +84,11 @@ const ProjectsSection = () => {
                   ))}
                 </div>
               </CardContent>
-              <CardFooter className="flex justify-between">
+              <CardFooter className="flex justify-center">
                 <Button asChild variant="outline" size="sm" className="border-portfolio-highlight text-portfolio-highlight hover:bg-portfolio-highlight/10">
                   <a href={project.github} target="_blank" rel="noopener noreferrer">
                     <Github size={16} className="mr-2" />
                     GitHub
-                  </a>
-                </Button>
-                <Button asChild variant="default" size="sm" className="bg-portfolio-highlight text-portfolio-darkblue hover:bg-portfolio-highlight/90">
-                  <a href={project.live} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink size={16} className="mr-2" />
-                    Demo
                   </a>
                 </Button>
               </CardFooter>
