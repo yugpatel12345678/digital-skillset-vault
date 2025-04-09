@@ -18,15 +18,10 @@ const AboutSection = () => {
           <div>
             <div className="relative">
               <div className="w-full h-[350px] rounded-lg overflow-hidden bg-portfolio-lightblue">
-                <img 
-                  src="/lovable-uploads/896a5952-96e3-424e-850b-44b3cb77b16d.png" 
-                  alt="Yug Patel" 
-                  className="w-full h-full object-cover object-center"
-                  onError={(e) => {
-                    console.error("Image failed to load");
-                    e.currentTarget.src = "/placeholder.svg";
-                  }}
-                />
+                {/* Placeholder color as fallback */}
+                <div className="w-full h-full bg-portfolio-lightblue flex items-center justify-center text-portfolio-highlight">
+                  <span className="text-xl font-medium">Yug Patel</span>
+                </div>
               </div>
               <div className="absolute -bottom-4 -right-4 w-full h-full border-4 border-portfolio-highlight rounded-lg -z-10"></div>
             </div>
