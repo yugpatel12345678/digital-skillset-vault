@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 
-// Resume file path
-const resumeFilePath = "https://github.com/yugpatel12345678/Resume/blob/main/Yug-Patel-FlowCV-Resume-20250408.pdf";
+// Resume file path - using a local file
+const resumeFilePath = "/resume.pdf"; // This expects the PDF to be in the public folder
 
 const ResumeSection = () => {
   const resumeData = {
@@ -38,7 +38,7 @@ const ResumeSection = () => {
         <div className="flex justify-between items-center mb-8">
           <h2 className="section-title">Resume</h2>
           <Button asChild className="bg-portfolio-highlight text-portfolio-darkblue hover:bg-portfolio-highlight/90">
-            <a href={resumeFilePath} download="Yug_Patel_Resume.pdf">
+            <a href={resumeFilePath} target="_blank" rel="noopener noreferrer" download="Yug_Patel_Resume.pdf">
               <Download size={16} className="mr-2" />
               Download Resume
             </a>
