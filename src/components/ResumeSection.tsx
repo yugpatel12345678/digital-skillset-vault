@@ -1,12 +1,8 @@
 
 import React from 'react';
-import { FileText, Download } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { FileText } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-
-// Resume file path - using a local file
-const resumeFilePath = "/resume.pdf"; // This expects the PDF to be in the public folder
 
 const ResumeSection = () => {
   const resumeData = {
@@ -35,14 +31,8 @@ const ResumeSection = () => {
   return (
     <section id="resume" className="section-padding bg-portfolio-blue">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center mb-8">
+        <div className="mb-8">
           <h2 className="section-title">Resume</h2>
-          <Button asChild className="bg-portfolio-highlight text-portfolio-darkblue hover:bg-portfolio-highlight/90">
-            <a href={resumeFilePath} target="_blank" rel="noopener noreferrer" download="Yug_Patel_Resume.pdf">
-              <Download size={16} className="mr-2" />
-              Download Resume
-            </a>
-          </Button>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
