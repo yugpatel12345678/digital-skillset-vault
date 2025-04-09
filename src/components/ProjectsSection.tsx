@@ -22,7 +22,7 @@ const projects = [
   {
     id: 2,
     title: 'EduShare Educational Platform',
-    description: 'A platform designed to simplify content creation, sharing, and quiz-making for educators.',
+    description: 'A platform designed to simplify content creation, sharing, and test-making for educators.',
     image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=800&q=80',
     features: [
       'AI-powered question generation',
