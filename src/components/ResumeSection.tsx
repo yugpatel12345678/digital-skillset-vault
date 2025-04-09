@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 
 // Resume file path
-const resumeFilePath = "https://github.com/yugpatel12345678/Resume/blob/main/Yug-Patel-FlowCV-Resume-20250408.pdf";
+const resumeFilePath = "https://github.com/yugpatel12345678/Resume/raw/main/Yug-Patel-FlowCV-Resume-20250408.pdf";
 
 const ResumeSection = () => {
   const resumeData = {
