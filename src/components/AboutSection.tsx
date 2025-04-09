@@ -17,11 +17,12 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             <div className="relative">
-              <div className="w-full h-[350px] rounded-lg overflow-hidden bg-portfolio-lightblue">
-                {/* Placeholder color as fallback */}
-                <div className="w-full h-full bg-portfolio-lightblue flex items-center justify-center text-portfolio-highlight">
-                  <span className="text-xl font-medium">Yug Patel</span>
-                </div>
+              <div className="w-full h-[350px] rounded-lg overflow-hidden">
+                <img 
+                  src="/lovable-uploads/896a5952-96e3-424e-850b-44b3cb77b16d.png" 
+                  alt="Yug Patel" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="absolute -bottom-4 -right-4 w-full h-full border-4 border-portfolio-highlight rounded-lg -z-10"></div>
             </div>
