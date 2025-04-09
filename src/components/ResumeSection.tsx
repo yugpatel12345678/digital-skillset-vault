@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 
 // Resume file path
-const resumeFilePath = "/lovable-uploads/resume.pdf";
+const resumeFilePath = "https://github.com/yugpatel12345678/Resume/blob/main/Yug-Patel-FlowCV-Resume-20250408.pdf";
 
 const ResumeSection = () => {
   const resumeData = {
