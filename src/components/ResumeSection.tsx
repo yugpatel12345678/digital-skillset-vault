@@ -13,7 +13,7 @@ const ResumeSection = () => {
     education: [
       {
         degree: 'Diploma in Computer Systems Technology',
-        institution: 'BCIT',
+        institution: 'Saskatchewan Polytechnic',
         duration: '2023 - 2025 (Expected)',
         description: 'Specializing in web development and cybersecurity.'
       }
