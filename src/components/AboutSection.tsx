@@ -9,7 +9,7 @@ const AboutSection = () => {
   
   useEffect(() => {
     const img = new Image();
-    img.src = "/lovable-uploads/a1519e56-541e-4aa1-a8a8-0d6e5164730b.png";
+    img.src = "/lovable-uploads/a06e0de1-4077-484d-9ac5-715c197e8e08.png";
     img.onload = () => setImageLoaded(true);
     img.onerror = () => setImageError(true);
   }, []);
@@ -35,17 +35,16 @@ const AboutSection = () => {
           <div className="animate-slide-left opacity-0 [animation-fill-mode:forwards]">
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-portfolio-cyan to-portfolio-purple rounded-2xl blur-md opacity-60 group-hover:opacity-80 transition duration-700"></div>
-              <div className="relative rounded-xl overflow-hidden aspect-square shadow-xl border-2 border-white/10">
+              <div className="relative rounded-xl overflow-hidden shadow-xl border-2 border-white/10">
                 {imageError ? (
                   <div className="w-full h-full flex items-center justify-center bg-portfolio-blue text-4xl font-bold text-white">
                     YP
                   </div>
                 ) : (
                   <img 
-                    src="/lovable-uploads/a1519e56-541e-4aa1-a8a8-0d6e5164730b.png" 
+                    src="/lovable-uploads/a06e0de1-4077-484d-9ac5-715c197e8e08.png" 
                     alt="Yug Patel" 
-                    className={`w-full h-full object-cover transition-all duration-700 ${imageLoaded ? 'opacity-100' : 'opacity-0'} hover:scale-105 transition-transform duration-500`}
-                    onError={() => setImageError(true)}
+                    className={`w-full object-contain transition-all duration-700 ${imageLoaded ? 'opacity-100' : 'opacity-0'} hover:scale-105 transition-transform duration-500`}
                   />
                 )}
               </div>

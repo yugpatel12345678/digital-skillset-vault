@@ -60,7 +60,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <Avatar className="h-10 w-10 border-2 border-portfolio-highlight glow-effect">
-            <AvatarImage src="/lovable-uploads/a1519e56-541e-4aa1-a8a8-0d6e5164730b.png" alt="YP" />
+            <AvatarImage src="/lovable-uploads/a06e0de1-4077-484d-9ac5-715c197e8e08.png" alt="YP" />
             <AvatarFallback className="bg-portfolio-blue text-white">YP</AvatarFallback>
           </Avatar>
           <h1 className={`text-lg font-heading font-semibold ${scrolled ? '' : 'animate-fade-in opacity-0 [animation-delay:0.3s] [animation-fill-mode:forwards]'}`}>
