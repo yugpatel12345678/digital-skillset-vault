@@ -20,8 +20,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Roboto', 'sans-serif'],
-				heading: ['Montserrat', 'sans-serif'],
+				sans: ['Inter', 'sans-serif'],
+				heading: ['Poppins', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -34,6 +34,8 @@ export default {
 					'blue': '#112240',
 					'lightblue': '#233554',
 					'highlight': '#64ffda',
+					'accent': '#8892b0',
+					'text': '#ccd6f6',
 				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
@@ -100,7 +102,11 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

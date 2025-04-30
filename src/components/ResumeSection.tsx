@@ -1,14 +1,39 @@
 
-import React from 'react';
-import { FileText, Download } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import React, { useEffect, useRef } from 'react';
+import { FileText, Calendar, Building, GraduationCap } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 
-// Resume file path
-const resumeFilePath = "https://github.com/yugpatel12345678/Resume/raw/main/Yug-Patel-FlowCV-Resume-20250408.pdf";
-
 const ResumeSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animate cards when they come into view
+          const cards = document.querySelectorAll('.resume-card');
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('animate-fade-in');
+              card.classList.remove('opacity-0');
+            }, index * 200);
+          });
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const resumeData = {
     education: [
       {
@@ -33,59 +58,69 @@ const ResumeSection = () => {
   };
 
   return (
-    <section id="resume" className="section-padding bg-portfolio-blue">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="section-title">Resume</h2>
-          <Button asChild className="bg-portfolio-highlight text-portfolio-darkblue hover:bg-portfolio-highlight/90">
-            <a href={resumeFilePath} download="Yug_Patel_Resume.pdf">
-              <Download size={16} className="mr-2" />
-              Download Resume
-            </a>
-          </Button>
-        </div>
+    <section id="resume" ref={sectionRef} className="section-padding bg-gradient-to-b from-portfolio-blue/30 to-portfolio-darkblue relative">
+      {/* Background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-portfolio-highlight/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full filter blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 className="section-title">Resume</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <Card className="bg-portfolio-lightblue border-none">
+          <div className="resume-card opacity-0 transition-all duration-500">
+            <Card className="glass-card border-portfolio-lightblue/20 overflow-hidden">
+              <div className="h-2 bg-gradient-to-r from-portfolio-highlight to-blue-400"></div>
               <CardHeader>
-                <CardTitle className="flex items-center text-xl text-white">
-                  <span className="bg-portfolio-highlight text-portfolio-darkblue p-2 rounded-full mr-3">
-                    <FileText size={18} />
+                <CardTitle className="flex items-center text-xl text-white space-x-3">
+                  <span className="bg-portfolio-highlight text-portfolio-darkblue p-2 rounded-full">
+                    <GraduationCap size={18} />
                   </span>
-                  Education
+                  <span>Education</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-6">
                 {resumeData.education.map((edu, index) => (
-                  <div key={index} className="pl-4 border-l-2 border-portfolio-highlight">
+                  <div 
+                    key={index} 
+                    className="pl-4 border-l-2 border-portfolio-highlight hover:border-portfolio-highlight/80 transition-all duration-300 hover:pl-5"
+                  >
                     <h3 className="text-white font-medium">{edu.degree}</h3>
                     <p className="text-portfolio-highlight font-medium">{edu.institution}</p>
-                    <p className="text-sm text-gray-300">{edu.duration}</p>
-                    <p className="mt-2 text-gray-300">{edu.description}</p>
+                    <p className="text-sm text-portfolio-accent flex items-center mt-1">
+                      <Calendar size={14} className="mr-1.5" /> {edu.duration}
+                    </p>
+                    <p className="mt-3 text-portfolio-accent">{edu.description}</p>
                   </div>
                 ))}
               </CardContent>
             </Card>
           </div>
           
-          <div>
-            <Card className="bg-portfolio-lightblue border-none">
+          <div className="resume-card opacity-0 transition-all duration-500">
+            <Card className="glass-card border-portfolio-lightblue/20 overflow-hidden">
+              <div className="h-2 bg-gradient-to-r from-portfolio-highlight to-blue-400"></div>
               <CardHeader>
-                <CardTitle className="flex items-center text-xl text-white">
-                  <span className="bg-portfolio-highlight text-portfolio-darkblue p-2 rounded-full mr-3">
-                    <FileText size={18} />
+                <CardTitle className="flex items-center text-xl text-white space-x-3">
+                  <span className="bg-portfolio-highlight text-portfolio-darkblue p-2 rounded-full">
+                    <Building size={18} />
                   </span>
-                  Work Experience
+                  <span>Work Experience</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-6">
                 {resumeData.experience.map((exp, index) => (
-                  <div key={index} className="pl-4 border-l-2 border-portfolio-highlight">
+                  <div 
+                    key={index} 
+                    className="pl-4 border-l-2 border-portfolio-highlight hover:border-portfolio-highlight/80 transition-all duration-300 hover:pl-5"
+                  >
                     <h3 className="text-white font-medium">{exp.position}</h3>
                     <p className="text-portfolio-highlight font-medium">{exp.company}</p>
-                    <p className="text-sm text-gray-300">{exp.duration}</p>
-                    <p className="mt-2 text-gray-300">{exp.description}</p>
+                    <p className="text-sm text-portfolio-accent flex items-center mt-1">
+                      <Calendar size={14} className="mr-1.5" /> {exp.duration}
+                    </p>
+                    <p className="mt-3 text-portfolio-accent">{exp.description}</p>
                   </div>
                 ))}
               </CardContent>
@@ -93,32 +128,51 @@ const ResumeSection = () => {
           </div>
         </div>
         
-        <div className="mt-8">
-          <Card className="bg-portfolio-lightblue border-none">
+        <div className="mt-8 resume-card opacity-0 transition-all duration-500">
+          <Card className="glass-card border-portfolio-lightblue/20 overflow-hidden">
+            <div className="h-2 bg-gradient-to-r from-portfolio-highlight to-blue-400"></div>
             <CardHeader>
-              <CardTitle className="flex items-center text-xl text-white">
-                <span className="bg-portfolio-highlight text-portfolio-darkblue p-2 rounded-full mr-3">
+              <CardTitle className="flex items-center text-xl text-white space-x-3">
+                <span className="bg-portfolio-highlight text-portfolio-darkblue p-2 rounded-full">
                   <FileText size={18} />
                 </span>
-                Skills
+                <span>Skills</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-white font-medium mb-3">Technical Skills</h3>
+                  <h3 className="text-white font-medium mb-4 flex items-center">
+                    <span className="w-1 h-4 bg-portfolio-highlight mr-2 rounded-full"></span>
+                    Technical Skills
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {resumeData.skills.technical.map((skill, index) => (
-                      <span key={index} className="skill-badge">{skill}</span>
+                      <span 
+                        key={index} 
+                        className="skill-badge"
+                        style={{animationDelay: `${0.1 * index}s`}}
+                      >
+                        {skill}
+                      </span>
                     ))}
                   </div>
                 </div>
                 
                 <div>
-                  <h3 className="text-white font-medium mb-3">Soft Skills</h3>
+                  <h3 className="text-white font-medium mb-4 flex items-center">
+                    <span className="w-1 h-4 bg-portfolio-highlight mr-2 rounded-full"></span>
+                    Soft Skills
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {resumeData.skills.soft.map((skill, index) => (
-                      <span key={index} className="skill-badge">{skill}</span>
+                      <span 
+                        key={index} 
+                        className="skill-badge"
+                        style={{animationDelay: `${0.1 * index}s`}}
+                      >
+                        {skill}
+                      </span>
                     ))}
                   </div>
                 </div>
