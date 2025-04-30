@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -50,20 +51,22 @@ const Navbar = () => {
 
   return (
     <nav 
-      className={`fixed w-full z-50 transition-all duration-300 ${
+      className={`fixed w-full z-50 transition-all duration-500 ${
         scrolled 
-          ? 'bg-portfolio-darkblue/80 backdrop-blur-md py-3 shadow-lg border-b border-portfolio-lightblue/20' 
+          ? 'bg-portfolio-darkblue/80 backdrop-blur-md py-3 shadow-lg border-b border-white/5' 
           : 'bg-transparent py-5'
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <span className={`text-2xl font-heading font-bold text-white relative ${scrolled ? '' : 'animate-fade-in opacity-0 [animation-delay:0.2s] [animation-fill-mode:forwards]'}`}>
-            YP
-            <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-portfolio-highlight"></span>
-          </span>
-          <h1 className={`hidden sm:block text-lg font-heading font-semibold text-white ${scrolled ? '' : 'animate-fade-in opacity-0 [animation-delay:0.3s] [animation-fill-mode:forwards]'}`}>
-            Yug Patel
+          <Avatar className="h-10 w-10 border-2 border-portfolio-highlight glow-effect">
+            <AvatarImage src="/lovable-uploads/a1519e56-541e-4aa1-a8a8-0d6e5164730b.png" alt="YP" />
+            <AvatarFallback className="bg-portfolio-blue text-white">YP</AvatarFallback>
+          </Avatar>
+          <h1 className={`text-lg font-heading font-semibold ${scrolled ? '' : 'animate-fade-in opacity-0 [animation-delay:0.3s] [animation-fill-mode:forwards]'}`}>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-portfolio-highlight to-portfolio-purple">
+              Yug Patel
+            </span>
           </h1>
         </div>
 

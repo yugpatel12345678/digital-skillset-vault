@@ -5,16 +5,9 @@ import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
   const [loaded, setLoaded] = useState(false);
-  const [imageError, setImageError] = useState(false);
   
   useEffect(() => {
     setLoaded(true);
-    
-    // Check if the image exists
-    const img = new Image();
-    img.src = "/lovable-uploads/896a5952-96e3-424e-850b-44b3cb77b16d.png";
-    img.onload = () => setImageError(false);
-    img.onerror = () => setImageError(true);
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -26,37 +19,31 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative pt-20 overflow-hidden">
-      {/* Background with overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-15"
-        style={{ 
-          backgroundImage: !imageError 
-            ? "url('/lovable-uploads/896a5952-96e3-424e-850b-44b3cb77b16d.png')" 
-            : "linear-gradient(135deg, #0a192f 0%, #112240 100%)" 
-        }}
-      >
-        <div className="absolute inset-0 bg-portfolio-darkblue/70 backdrop-filter backdrop-blur-sm"></div>
+      {/* Background elements */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-portfolio-highlight/5 rounded-full filter blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-portfolio-purple/5 rounded-full filter blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-3/4 right-1/3 w-64 h-64 bg-portfolio-teal/5 rounded-full filter blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
       </div>
       
-      {/* Animated gradient overlay */}
-      <div className="absolute inset-0 opacity-20 bg-gradient-to-tr from-portfolio-highlight/10 via-transparent to-blue-500/10"></div>
-      
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl mx-auto">
-          <div className={`transition-all duration-700 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="max-w-3xl mx-auto text-center">
+          <div className={`transition-all duration-1000 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <p className="text-portfolio-highlight mb-3 font-medium tracking-wider animate-fade-in opacity-0 [animation-delay:0.2s] [animation-fill-mode:forwards]">
               HELLO, MY NAME IS
             </p>
             
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-heading mb-4 text-portfolio-text bg-clip-text bg-gradient-to-r from-white to-white/80 animate-fade-in opacity-0 [animation-delay:0.4s] [animation-fill-mode:forwards]">
-              Yug Patel
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-heading mb-4 animate-fade-in opacity-0 [animation-delay:0.4s] [animation-fill-mode:forwards]">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-portfolio-highlight to-portfolio-purple">
+                Yug Patel
+              </span>
             </h1>
             
             <h2 className="text-2xl md:text-3xl text-portfolio-accent font-medium mb-6 animate-fade-in opacity-0 [animation-delay:0.6s] [animation-fill-mode:forwards]">
               Computer Systems Technology Student
             </h2>
             
-            <p className="text-portfolio-accent text-lg mb-8 max-w-2xl mx-auto animate-fade-in opacity-0 [animation-delay:0.8s] [animation-fill-mode:forwards]">
+            <p className="text-portfolio-text text-lg mb-8 max-w-2xl mx-auto animate-fade-in opacity-0 [animation-delay:0.8s] [animation-fill-mode:forwards]">
               Welcome to my digital portfolio! I specialize in web development and cybersecurity. 
               This portfolio showcases my technical skills, projects, and experience as I prepare 
               for a career in IT and software development.
@@ -64,15 +51,14 @@ const HeroSection = () => {
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in opacity-0 [animation-delay:1s] [animation-fill-mode:forwards]">
               <Button 
-                variant="default" 
-                className="bg-portfolio-highlight text-portfolio-darkblue hover:bg-portfolio-highlight/90 border border-portfolio-highlight font-medium px-6 py-5 transition-all duration-300 hover:shadow-lg hover:shadow-portfolio-highlight/20"
+                className="btn-primary"
                 onClick={() => scrollToSection('projects')}
               >
                 View My Projects
               </Button>
               <Button 
                 variant="outline" 
-                className="border-portfolio-highlight text-portfolio-highlight hover:bg-portfolio-highlight/10 font-medium px-6 py-5 transition-all duration-300"
+                className="btn-outline"
                 onClick={() => scrollToSection('contact')}
               >
                 Contact Me

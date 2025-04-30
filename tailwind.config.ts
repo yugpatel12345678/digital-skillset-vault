@@ -30,12 +30,15 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				portfolio: {
-					'darkblue': '#0a192f',
-					'blue': '#112240',
-					'lightblue': '#233554',
-					'highlight': '#64ffda',
-					'accent': '#8892b0',
-					'text': '#ccd6f6',
+					'darkblue': '#1a2c4e',
+					'blue': '#2a4a80',
+					'lightblue': '#3e7bca',
+					'highlight': '#60daff',
+					'accent': '#8492b0',
+					'text': '#e2e8f5',
+					'purple': '#6c63ff',
+					'cyan': '#00c2cb',
+					'teal': '#4ce3c2',
 				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
@@ -97,11 +100,21 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				float: {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' },
+				},
+				pulse: {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.7' },
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 5s ease-in-out infinite',
+				'pulse-slow': 'pulse 3s ease-in-out infinite'
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

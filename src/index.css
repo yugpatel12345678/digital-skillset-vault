@@ -35,7 +35,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
 }
 
@@ -47,9 +47,9 @@
   body {
     @apply bg-portfolio-darkblue text-white font-sans;
     background-image: 
-      radial-gradient(at 40% 20%, hsla(212, 98%, 45%, 0.1) 0px, transparent 50%),
-      radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 0.1) 0px, transparent 50%),
-      radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 0.1) 0px, transparent 50%);
+      radial-gradient(at 40% 20%, hsla(210, 80%, 50%, 0.08) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsla(189, 100%, 70%, 0.08) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsla(355, 100%, 70%, 0.08) 0px, transparent 50%);
     background-attachment: fixed;
   }
 
@@ -70,12 +70,12 @@
 }
 
 @keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-20px); }
+  from { opacity: 0; transform: translateX(-30px); }
   to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideInRight {
-  from { opacity: 0; transform: translateX(20px); }
+  from { opacity: 0; transform: translateX(30px); }
   to { opacity: 1; transform: translateX(0); }
 }
 
@@ -94,26 +94,27 @@
 }
 
 .section-title {
-  @apply text-3xl md:text-4xl font-heading mb-12 text-white relative inline-block;
+  @apply text-3xl md:text-4xl font-heading mb-12 relative inline-block;
   animation: fadeIn 0.8s ease-out;
 }
 
 .section-title::after {
   content: '';
-  @apply block h-1 w-3/4 bg-gradient-to-r from-portfolio-highlight to-blue-400 mt-2 rounded-full;
+  @apply block h-1 w-3/4 bg-gradient-to-r from-portfolio-highlight to-portfolio-purple mt-2 rounded-full;
 }
 
 .project-card {
-  @apply bg-portfolio-blue/80 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-500 border border-portfolio-lightblue/20 hover:shadow-xl hover:shadow-portfolio-highlight/10;
+  @apply bg-white/5 backdrop-blur-md rounded-xl overflow-hidden transition-all duration-500 border border-white/10 hover:shadow-xl hover:shadow-portfolio-highlight/10;
   animation: fadeIn 0.6s ease-out;
 }
 
 .project-card:hover {
   transform: translateY(-5px);
+  @apply border-portfolio-highlight/30;
 }
 
 .skill-badge {
-  @apply bg-portfolio-lightblue/70 text-white px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-sm border border-white/5 hover:bg-portfolio-highlight hover:text-portfolio-darkblue;
+  @apply bg-portfolio-blue/50 text-white px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-sm border border-white/5 hover:bg-portfolio-highlight hover:text-portfolio-darkblue;
 }
 
 .navbar-link {
@@ -126,12 +127,12 @@
 
 .navbar-link.active::after {
   content: '';
-  @apply absolute left-0 -bottom-1 w-full h-0.5 bg-gradient-to-r from-portfolio-highlight to-blue-400 rounded-full;
+  @apply absolute left-0 -bottom-1 w-full h-0.5 bg-gradient-to-r from-portfolio-highlight to-portfolio-purple rounded-full;
 }
 
 .navbar-link::after {
   content: '';
-  @apply absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-portfolio-highlight to-blue-400 transition-all duration-300 rounded-full;
+  @apply absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-portfolio-highlight to-portfolio-purple transition-all duration-300 rounded-full;
 }
 
 .navbar-link:hover::after {
@@ -147,11 +148,11 @@
 }
 
 .animate-slide-left {
-  animation: slideInLeft 0.6s ease-out forwards;
+  animation: slideInLeft 0.8s ease-out forwards;
 }
 
 .animate-slide-right {
-  animation: slideInRight 0.6s ease-out forwards;
+  animation: slideInRight 0.8s ease-out forwards;
 }
 
 .animate-pulse-slow {
@@ -161,23 +162,23 @@
 .shimmer-effect {
   background: linear-gradient(90deg, 
     rgba(255,255,255,0) 0%, 
-    rgba(255,255,255,0.08) 50%, 
+    rgba(255,255,255,0.12) 50%, 
     rgba(255,255,255,0) 100%);
   background-size: 200% 100%;
   animation: shimmer 2.5s infinite;
 }
 
 .glow-effect {
-  box-shadow: 0 0 15px rgba(100, 255, 218, 0.15);
+  box-shadow: 0 0 15px rgba(96, 218, 255, 0.15);
   transition: box-shadow 0.3s ease;
 }
 
 .glow-effect:hover {
-  box-shadow: 0 0 25px rgba(100, 255, 218, 0.3);
+  box-shadow: 0 0 25px rgba(96, 218, 255, 0.3);
 }
 
 .glass-card {
-  @apply backdrop-blur-md bg-white/5 border border-white/10;
+  @apply backdrop-blur-lg bg-white/5 border border-white/10 rounded-xl;
 }
 
 /* Image frame styling */
@@ -206,4 +207,13 @@
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+}
+
+/* Button styling */
+.btn-primary {
+  @apply bg-gradient-to-r from-portfolio-highlight to-portfolio-purple text-portfolio-darkblue font-medium px-6 py-2.5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-portfolio-highlight/20 border border-transparent;
+}
+
+.btn-outline {
+  @apply bg-transparent border border-portfolio-highlight text-portfolio-highlight hover:bg-portfolio-highlight/10 font-medium px-6 py-2.5 rounded-full transition-all duration-300;
 }
